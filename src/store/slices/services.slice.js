@@ -3,20 +3,12 @@ import { axiosSpa } from "../../utils/configAxios";
 import { toast } from "sonner";
 
 
-function initialServices () {
-   const services =  localStorage.getItem('services')
-if (services) {
-    return JSON.parse(services) 
- }else {
-    return []
- }
 
-} 
 
 const servicesSlice = createSlice({
   name: "services",
   initialState: {
-    services:initialServices(),
+    services:[],
     serviceToUpdate:false
   },
   reducers: {
@@ -37,39 +29,25 @@ const servicesSlice = createSlice({
     },
     removeService : (state,action) =>{
         const idServiceToDelete = action.payload
-        let serviceslocal = localStorage.getItem('services')
-      if(serviceslocal) {
-        serviceslocal = JSON.parse(serviceslocal)
-      }
-      else {
-        serviceslocal = []
-      }
+        let newServices = state.services
 
-      serviceslocal = serviceslocal.filter((service)=>{
+        newServices = newServices.filter((service)=>{
              return service.id !== idServiceToDelete
       })
-      localStorage.setItem('services',JSON.stringify(serviceslocal))
-      state.services = serviceslocal
+      state.services = newServices
     },
     updateService : (state,action) =>{
      const newService =  action.payload
 
-     let serviceslocal = localStorage.getItem('services')
-      if(serviceslocal) {
-        serviceslocal = JSON.parse(serviceslocal)
-      }
-      else {
-        serviceslocal = []
-      }
+     const newServices = state.services
 
-      serviceslocal.forEach(service => {
+     newServices.forEach(service => {
         if (service.id === newService.id) {
           service.name = newService.name;
           service.initPrice = newService.initPrice
         }
       });
-      localStorage.setItem('services',JSON.stringify(serviceslocal))
-      state.services = serviceslocal
+      state.services = newServices
 
 
     },
@@ -92,7 +70,7 @@ export const getServicesThunk = () => (dispatch) => {
       axiosSpa.get('/services')
       .then(({data})=>{
          console.log(data);
-         localStorage.setItem('services', JSON.stringify(data))
+         
          
           dispatch(setService(data))
 

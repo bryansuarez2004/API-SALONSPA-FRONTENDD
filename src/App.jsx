@@ -7,6 +7,9 @@ import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getServicesThunk } from "./store/slices/services.slice";
+import { getTreatmentsThunk } from "./store/slices/treatments.slice";
+import ModalCreateSessions from "./components/layout/ModalCreateSessions";
+import { getSessionsPendingThunk } from "./store/slices/modalSession.slice";
 
 function App() {
   const dispatch = useDispatch()
@@ -42,11 +45,12 @@ function App() {
   };
 
   useEffect(()=>{
-    const services = localStorage.getItem('services') 
-     if(!services) {
+     console.log('pidiendo servicios y tratamientos inicial en App.jsx');
+     
       dispatch(getServicesThunk())
-      
-     }
+      dispatch(getTreatmentsThunk())
+      dispatch(getSessionsPendingThunk())
+     
      
   },[])
 
@@ -62,7 +66,9 @@ function App() {
           </Route>
         </Routes>
       </Flowbite>
+      <ModalCreateSessions />
       <Toaster position="top-right"   />
+      
     </>
   );
 }

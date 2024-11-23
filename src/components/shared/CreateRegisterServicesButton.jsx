@@ -30,7 +30,7 @@ const CreateRegisterServicesButton = () => {
           <div className="p-4 pb-6 text-4xl text-gray-200 font-medium">
             Registrar servicio realizado
           </div>
-          <div className="bg-red-200 w-full flex gap-4">
+          <div className="bg-red-200 w-full grid grid-cols-[1fr,3fr]">
 
           <OptionsServices
             serviceSelected={serviceSelected}

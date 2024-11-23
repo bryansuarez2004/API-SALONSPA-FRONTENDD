@@ -22,3 +22,15 @@
     background-color: #877; /* Color del scrollbar */
     border-radius: 10px; /* Bordes redondeados del scrollbar */
   }
+
+  .embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+    gap: 10px;
+  }
+  .embla__slide {
+    flex: 0 0 25%;
+    min-width: 0;
+  }  

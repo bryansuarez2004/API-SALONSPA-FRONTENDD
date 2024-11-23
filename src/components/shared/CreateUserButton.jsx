@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { FloatingLabel, Modal,Datepicker } from "flowbite-react";
 import { useState } from "react";
-import {changeFormatDate, putFullName} from "../../utils/formats"
+import {putFullName} from "../../utils/formats"
 import { useDispatch } from "react-redux";
 import { createUserThunk } from "../../store/slices/user.slice";
 import { useNavigate } from 'react-router-dom';
@@ -19,8 +19,9 @@ const CreateUserButton = () => {
     const formData = new FormData(formRegister.current);
     const data = Object.fromEntries(formData.entries());
     buttonSubmit.current.disabled = true;
-
-    const birthday = changeFormatDate(data.fecha)
+     console.log(data.fecha);
+     
+    const birthday = data.fecha
     const fullName = putFullName(data.nombre,data.apellido)
 
     const dataUser = {
@@ -79,16 +80,18 @@ const CreateUserButton = () => {
             onSubmit={onSubmit}
             className="grid grid-cols-2 grid-rows-3 gap-2 "
           >
-             <Datepicker
-            language="es-PE"
-            showClearButton={false}
-            labelTodayButton={'fecha actual'}
-            
-            format={'mm/dd/yyyy'}
-         name="fecha"
-         className="col-start-1 col-end-3"
-      weekStart={1} // Monday
-    />
+            <div  className="col-start-1 col-end-3  ">
+
+            <FloatingLabel
+                variant="outlined"
+                autoComplete={"off"}
+                name="fecha"
+                type="date"
+                label="Fecha de Nacimiento"
+                className="  "
+                />
+                </div>
+             
             <div>
               <FloatingLabel
                 variant="outlined"

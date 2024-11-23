@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddServiceButton from '../shared/AddServiceButton'
 import CreateRegisterServicesButton from '../shared/CreateRegisterServicesButton'
+import HistorialServices from './UserStadistics/HistorialServices'
+import CreateRegisterTreatmentsButton from '../shared/CreateRegisterTreatmentsButton'
+import HistorialTreatments from './UserStadistics/HistorialTreatments'
 
 const UserStadistics = () => {
   return (
@@ -8,10 +11,13 @@ const UserStadistics = () => {
 
         <div className=' flex gap-4 justify-around'>
           <CreateRegisterServicesButton />
+          <CreateRegisterTreatmentsButton  />
         </div>
-        <div className='bg-salient h-auto grow'>
-
+        <div className='bg-salient grid grid-cols-2  grow'>
+            <HistorialServices />
+            <HistorialTreatments  />
         </div>
+        
 
     </div> 
   )

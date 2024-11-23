@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosSpa = axios.create({
-    baseURL:"http://localhost:8080"
+    baseURL:"https://api-spa-salon.onrender.com"
 })
 
 

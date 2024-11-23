@@ -3,6 +3,7 @@ import React from 'react'
 import { MdClose, MdFormatLineSpacing } from 'react-icons/md'
 import CreateUserButton from '../shared/CreateUserButton';
 import AddServiceButton from '../shared/AddServiceButton';
+import AddTreatmentButton from '../shared/AddTreatmentButton';
 
 const Aside = ({closeAside}) => {
 
@@ -17,7 +18,7 @@ const Aside = ({closeAside}) => {
      
       <CreateUserButton />
       <AddServiceButton />
-      <Button color="primary">Click me</Button>
+      <AddTreatmentButton />
     </div>
     
     </>

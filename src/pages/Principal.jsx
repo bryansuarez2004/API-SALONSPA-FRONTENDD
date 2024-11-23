@@ -3,6 +3,7 @@ import Searcher from "../components/shared/Searcher";
 import Aside from "../components/layout/Aside";
 import { MdFormatLineSpacing } from "react-icons/md";
 import CurrentStadistics from "../components/layout/CurrentStadistics";
+import SliderSessionsPending from "../components/layout/SliderSessionsPending";
 
 const Principal = () => {
 
@@ -12,7 +13,8 @@ const Principal = () => {
     aside.current.classList.add("animate-openSlide");
     aside.current.classList.remove("animate-closeSlide");
   };
-
+  
+  
   const closeAside = () => {
     aside.current.classList.remove("animate-openSlide");
     aside.current.classList.add("animate-closeSlide");
@@ -27,7 +29,7 @@ const Principal = () => {
               
            </div>
            <div className="bg-bgfordward backdrop-blur-md   md:col-span-4 md:row-span-1">
-             {/* slider de sesiones */}
+            <SliderSessionsPending />
            </div>
            <div className=" w-full md:col-span-3 row-span-3">
              <CurrentStadistics />
