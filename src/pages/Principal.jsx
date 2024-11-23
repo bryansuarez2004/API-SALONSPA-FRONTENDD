@@ -4,9 +4,10 @@ import Aside from "../components/layout/Aside";
 import { MdFormatLineSpacing } from "react-icons/md";
 import CurrentStadistics from "../components/layout/CurrentStadistics";
 import SliderSessionsPending from "../components/layout/SliderSessionsPending";
+import { putFullName } from "../utils/formats";
 
 const Principal = () => {
-
+  console.log(putFullName('Bryan','Suares'))
     const aside = useRef(null);
 
   const openAside = () => {

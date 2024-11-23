@@ -23,12 +23,16 @@ const CreateUserButton = () => {
      
     const birthday = data.fecha
     const fullName = putFullName(data.nombre,data.apellido)
-
+    console.log(fullName);
+    
+  
     const dataUser = {
         fullName,
         birthday,
         phone:data.phone
     }
+    console.log(dataUser);
+
      try{
 
        const hola = await dispatch(createUserThunk(dataUser))
